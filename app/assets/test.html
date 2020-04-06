@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Rocket ElevatorsWL, QUOTE</title>
+		<meta name="description" content="" />
+		<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+
+		<!-- mobile settings -->
+		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+		<!-- WEB FONTS : use %7C instead of | (pipe) -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
+
+		
+
+		
+		
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+		<!-- PAGE LEVEL SCRIPTS -->
+		
+       
+        <script src="plugins/jquery/jquery-3.3.1.min.js"></script>
+	</head>
+
+	
+	-->
+	<body class="smoothscroll enable-animation">
+		<span style="font-family:Roboto">
+		
+
+
+		
+
+<!--Residential quote options-->
+										<div class="residentialoptions">
+											<div class="row">
+													<div  class="col-md-4">
+														<label for="contact:subject"> Number of apartments</label>
+														<input id="numberOfApartmentResidential" required type="number" value=""  class="form-control"   name="contact[subject][required]" />
+													</div>
+													<div  class="col-md-4">
+														<label for="contact:email">Number of floors</label>
+														<input id="numberOfFloorResidential" required type="number" value=""  class="form-control"   name="contact[name][required]" />
+													</div>
+													<div  class="col-md-4">
+														<label for="contact:name"> Number of basements</label>
+														<input id="numberOfBasementResidential" required type="number" value=""  class="form-control"   name="contact[name][required]" />
+													</div>
+											</div>
+											<div  class="col-md-4">Number of elevator recommended <input id="nbElevatorNeededResidential" type="number" class="form-control" disabled></div><br>
+											<br><div class="col-md-8">
+												<p><strong>Chose the quality of the elevator below</strong></p>
+												
+												<input id ="standardResidential" type="radio" onclick="submit()" name="services" value="standard"  /> Standard<br>
+												<input id ="premiumResidential"  type="radio" name="services" value="premium" /> Premium<br>
+												<input id ="exceliumResidential" type="radio" name="services" value="other" /> Excelium<br><br>
+
+											</div>
+											<div  class="col-md-4">Elevator unit cost $<input id="elevatorUnitCostResidential" type="text" class="form-control" disabled></div><br>
+										<br><div  class="col-md-4">Installation cost $<input id="installationCostResidential" type="text" class="form-control" disabled></div><br>
+										<br><div  class="col-md-4">Total cost $ <input id="totalCostResidential" type="text" class="form-control" disabled></div><br>
+											
+
+										</div>
+<!-- Residential quote end-->	
+<script>
+
+
+function submit(){
+    data = {
+        numberOfApartmentResidential: document.getElementById("numberOfApartmentResidential").value,
+        numberOfFloorResidential: document.getElementById("numberOfFloorResidential").value,
+		numberOfBasementResidential: document.getElementById("numberOfBasementResidential").value,
+		choix : "standard"
+
+    }
+    console.log(data)
+    Call(data)
+}
+
+
+  function Call(data){
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:3000/calcul",
+    data: data,
+    cache: false,
+    success: function(data){
+   console.log("jsuis rentrer")
+  }}).then(response => {
+	  console.log(response);
+  })
+  
+}
+
+
+  
+  </script>
+</span>
+	</body>
+</html>

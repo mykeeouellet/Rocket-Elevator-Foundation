@@ -1,0 +1,272 @@
+
+	<body class="smoothscroll enable-animation" style="background-color: lightgray;" >
+		<style>
+		h1,
+		h2,
+		div,
+		h3 { font-family:Roboto
+		}
+
+		</style>
+
+
+		<!-- wrapper -->
+		<div id="wrapper">
+
+			<!-- 
+				AVAILABLE HEADER CLASSES
+
+				Default nav height: 96px
+				.header-md 		= 70px nav height
+				.header-sm 		= 60px nav height
+
+				.b-0 		= remove bottom border (only with transparent use)
+				.transparent	= transparent header
+				.translucent	= translucent header
+				.sticky			= sticky header
+				.static			= static header
+				.dark			= dark header
+				.bottom			= header on bottom
+				
+				shadow-before-1 = shadow 1 header top
+				shadow-after-1 	= shadow 1 header bottom
+				shadow-before-2 = shadow 2 header top
+				shadow-after-2 	= shadow 2 header bottom
+				shadow-before-3 = shadow 3 header top
+				shadow-after-3 	= shadow 3 header bottom
+
+				.clearfix		= required for mobile menu, do not remove!
+
+				Example Usage:  class="clearfix sticky header-sm transparent b-0"
+			-->
+			<div id="header" class="navbar-toggleable-md sticky header-md clearfix fixed" >
+
+				<!-- TOP NAV -->
+				<header id="topNav" class="w3-panel w3-border-red w3-large w3-topbar w3-bottombar w3-container w3-gray"">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+						<a class="logo float-left scrollTo" href="#top">
+							<img src="/assets/R2.png" alt="" />
+						</a>
+
+						<!-- 
+							Top Nav 
+							
+							AVAILABLE CLASSES:
+							submenu-dark = dark sub menu
+						-->
+						<div  class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<!-- 
+									.nav-onepage
+									Required for onepage navigation links
+									
+									Add .external for an external link!
+								-->
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active"><!-- HOME -->
+										<a href="/pages/index_one_page_elevator.html">
+											HOME
+										</a>
+									</li>
+									<li><!-- SERVICES -->
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray"><a href="index_one_page_elevator.html#services" class="w3-bar-item w3-button">SERVICES</a></button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+											  <a href="/pages/residential_services.html" class="w3-bar-item w3-button">Residential</a>
+											  <a href="/pages/corporate_services.html" class="w3-bar-item w3-button">Corporate</a>
+											  
+											</div>
+										  </div>
+									</li>
+									<li><!-- WORK -->
+										<a href="/pages/index_one_page_elevator.html#portfolio">
+											PORTFOLIO
+										</a>
+									</li>
+									<li><!-- NEWS -->
+										<a href="/pages/index_one_page_elevator.html#news">
+											NEWS
+										</a>
+									</li>
+									<li><!-- CLIENTS -->
+										<a href="/pages/index_one_page_elevator.html#clients">
+											CLIENTS
+										</a>
+									</li>
+									<li><!-- CONTACT -->
+										<a href="/pages/index_one_page_elevator.html#contact">
+											CONTACT
+										</a>
+									</li>
+									<li>
+									<div id="sessionButton">
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray">SESSION</button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+											  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %><br>
+											  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %><br>
+											  <%= link_to "Admin", rails_admin.dashboard_path, :class => 'navbar-link'  %>
+											  
+											</div>
+										  </div>
+									</div>
+									</li>
+									
+									<li>
+									<% if user_signed_in? %>
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray">PROFILE</button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+												
+													<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %><br>
+													<a href="/pages/login.html">My quotes</a><br>
+													<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+													<script>document.getElementById("sessionButton").style.display = "none";</script>
+												<% end %>
+												
+												</div>
+											</div>
+										  </div>
+									</li>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+			</div>
+			<hr class="m-0" /><!-- 1px line separator -->
+<section style="background-image: url('/assets/AdobeStock_162479912.jpeg'); text-align:center">
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
+
+<%= render "employees/shared/links" %>
+</section>
+            <!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div class="col-md-6">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+							We are the best on the market, based on our customer feedback!
+							</p>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-6">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+						</div>				
+						<!-- /col #2 -->
+					</div>
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Rocket Elevators @2020
+					</div>
+				</div>
+
+			</footer>
+			<!-- /FOOTER -->
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+
+
+		<!-- PRELOADER -->
+		<div id="preloader">
+			<div class="inner">
+				<span class="loader"></span>
+			</div>
+		</div>
+		<!-- /PRELOADER -->
+</body>
+
+
+

@@ -1,0 +1,346 @@
+<html>
+<body class="smoothscroll enable-animation">
+	<!-- wrapper -->
+	<div id="wrapper">
+
+
+		<!-- TOP NAV -->
+		
+		<div id="header" class="navbar-toggleable-md sticky header clearfix fixed">
+				<header id="topNav" class="w3-panel w3-border-red w3-large w3-topbar w3-bottombar w3-container w3-gray"">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+						<a class="logo float-left scrollTo" href="#top">
+							<img src="/assets/R2.png" alt="" />
+						</a>
+
+						<!-- 
+							Top Nav 
+							
+							AVAILABLE CLASSES:
+							submenu-dark = dark sub menu
+						-->
+						<div  class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<!-- 
+									.nav-onepage
+									Required for onepage navigation links
+									
+									Add .external for an external link!
+								-->
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active"><!-- HOME -->
+										<a href="/pages/index_one_page_elevator.html">
+											HOME
+										</a>
+									</li>
+									<li><!-- SERVICES -->
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray"><a href="index_one_page_elevator.html#services" class="w3-bar-item w3-button">SERVICES</a></button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+											  <a href="/pages/residential_services.html" class="w3-bar-item w3-button">Residential</a>
+											  <a href="/pages/corporate_services.html" class="w3-bar-item w3-button">Corporate</a>
+											  
+											</div>
+										  </div>
+									</li>
+									<li><!-- WORK -->
+										<a href="/pages/index_one_page_elevator.html#portfolio">
+											PORTFOLIO
+										</a>
+									</li>
+									<li><!-- NEWS -->
+										<a href="/pages/index_one_page_elevator.html#news">
+											NEWS
+										</a>
+									</li>
+									<li><!-- CLIENTS -->
+										<a href="/pages/index_one_page_elevator.html#clients">
+											CLIENTS
+										</a>
+									</li>
+									<li><!-- CONTACT -->
+										<a href="/pages/index_one_page_elevator.html#contact">
+											CONTACT
+										</a>
+									</li>
+									<li>
+									<div id="sessionButton">
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray">SESSION</button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+											  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %><br>
+											  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %><br>
+											  <%= link_to "Admin", rails_admin.dashboard_path, :class => 'navbar-link'  %>
+											  
+											</div>
+										  </div>
+									</div>
+									</li>
+									
+									<li>
+									<% if user_signed_in? %>
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray">PROFILE</button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+												
+													<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %><br>
+													<a href="/pages/login.html">My quotes</a><br>
+													<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+													<script>document.getElementById("sessionButton").style.display = "none";</script>
+												<% end %>
+												
+												</div>
+											</div>
+										  </div>
+									</li>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+		</div>
+		<!-- /TOP NAV -->
+
+		<!-- Parallax -->
+		<section class="parallax h-150 pt-40 pb-40" style="background-image: url('/assets/12-min.jpg');">
+			<div class="overlay dark-5">
+				<!-- dark overlay [1 to 9 opacity] -->
+			</div>
+
+		<div class="container">
+			<div class="text-center">
+				<br><h2 class="fs-40 fw-100">SUBMISSION FORM</h2>
+			</div>
+		</div>
+		</section>
+
+	<!-- SUBMISSION FORM -->
+		<section class="p-20" style="background-image: url('/assets/12-min.jpg');">
+			<div class="container" style="color: rgb(255, 255, 255)">
+				<!--FIRST SECTION-->
+				<!--Specify the building type, ONE OPTION ONLY-->
+				<form action="/quotes" method="post">
+					<div class="row">
+						<div class="col-sm-6 col-md-8">
+							<p> <strong>First, please select the type of your building in the list below</strong> </p>
+							<label for="building_type">Building type</label>
+							<select id="mySelect" name="building_type" class="fs-18 h-50">
+								<option value="select"></option><br>
+								<option value="residental">Residental</option>
+								<option value="commercial">Commercial</option>
+								<option value="corporate">Corporate</option>
+								<option value="hybrid">Hybrid</option>
+
+							</select><br><br><br>
+
+						</div>
+
+						<br><div class="col-sm-6 col-md-8"><br>
+						Enter your email
+							<input id="userEmail" type="email" name="userEmail" value="" oninput="Call()">
+						</div>
+						<br>
+						<br>
+						<br>
+						<!--BUILDING TYPES-->
+						<div class="col-sm-6 col-md-12">
+							<div id="residental" class="building_type">
+								Enter the number of apartments
+								<input id="NbrApartment" type="number" name="NbrApartment" value="" oninput="Call()"
+									onkeyup="Call()"><br><br>
+								Enter the number of floor
+								<input id="NbrFloorResidential" type="number" name="NbrFloorResidential" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of basements
+								<input id="NbrBasementResidential" type="number" name="NbrBasementResidential" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-12">
+							<div id="commercial" class="building_type">
+								Enter the number of separate businesses
+								<input id="NbrSeparateBusinessCommercial" type="number"
+									name="NbrSeparateBusinessCommercial" value="" oninput="Call()"
+									onkeyup="Call()"><br><br>
+								Enter the number of floor
+								<input id="NbrFloorCommercial" type="number" name="NbrFloorCommercial" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of basements
+								<input id="NbrBasementCommercial" type="number" name="NbrBasementCommercial" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of parking spots available
+								<input id="NbrParkingCommercial" type="number" name="NbrParkingCommercial" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of lift cages to deploy
+								<input id="NbrElevatorCage" type="number" name="NbrElevatorCage" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-12">
+							<div id="corporate" class="building_type">
+								Enter the number of separate rental companies
+								<input id="NbrTenant" type="number" name="NbrTenant" value="" oninput="Call()"
+									onkeyup="Call()"><br><br>
+								Enter the number of floor
+								<input id="NbrFloorCorporate" type="number" name="NbrFloorCorporate" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of basements
+								<input id="NbrBasementCorporate" type="number" name="NbrBasementCorporate" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of parking spots available
+								<input id="NbrParkingCorporate" type="number" name="NbrParkingCorporate" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of occupants per floor
+								<input id="NbrMaxOccupantCorporate" type="number" name="NbrMaxOccupantCorporate"
+									value="" input="Call()" onkeyup="Call()"><br><br>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-12">
+							<div id="hybrid" class="building_type">
+								Enter the number of separate businesses
+								<input id="NbrSeparateBusinessHybrid" type="number" name="NbrSeparateBusinessHybrid"
+									value="" oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of floor
+								<input id="NbrFloorHybrid" type="number" name="NbrFloorHybrid" value="" oninput="Call()"
+									onkeyup="Call()"><br><br>
+								Enter the number of basements
+								<input id="NbrBasementHybrid" type="number" name="NbrBasementHybrid" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of parking spots available
+								<input id="NbrParkingHybrid" type="number" name="NbrParkingHybrid" value=""
+									oninput="Call()" onkeyup="Call()"><br><br>
+								Enter the number of occupants per floor
+								<input id="NbrMaxOccupantHybrid" type="number" name="NbrMaxOccupantHybrid" value=""
+									input="Call()" onkeyup="Call()"><br><br>
+								Enter the number of hours of activity of the building
+								<input id="NbrActivityHour" type="number" name="NbrActivityHour" value="" input="Call()"
+									onkeyup="Call()"><br><br>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-12">
+							<br><p>Number of elevators you need: <input id="ResultElevator" type="number"
+									name="ResultElevator" value=""></p><br>
+						</div>
+					</div>
+					<!-- /BUILDING TYPES-->
+					<!-- /FIRST SECTION-->
+
+					<!-- SECOND SECTION-->
+					<!--Specify the quality of elevator-->
+					<div class="row">
+						<div class="col-sm-6 col-md-6">
+							<p><strong>Second, please chose the quality of elevator below</strong></p>
+							<div>
+								<input id="PriceUnitStandard" type="radio" name="services" value="standard"
+									onchange="Price()"> Standard<br>
+								<input id="PriceUnitPremium" type="radio" name="services" value="premium"
+									onchange="Price()"> Premium<br>
+								<input id="PriceUnitExcelium" type="radio" name="services" value="excelium"
+									onchange="Price()"> Excelium<br><br>
+
+								<br>Price of an elevators: <input id="PriceUnit" name="PriceUnit" type="float">$<br>
+								<br>Installation of an elevator: <input id="InstallationCost" name="InstallationCost"
+									type="float">$<br>
+								<br>Total cost: <input id="TotalCost" name="TotalCost" type="float">$<br>
+							</div>
+							<input type="submit" onclick="myFunction()" name="Ajouter a la quote list">
+							<script>
+									function myFunction() {
+  										alert("Your submission have been save! Log in if you want to check it again!");
+									}
+							</script>
+						</div>
+					</div>		
+				</form>
+			</div>
+		<!-- /SECOND SECTION-->
+		</section>
+	<!-- /SUBMISSION FORM -->
+
+	            <!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div class="col-md-6">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+							We are the best on the market, based on our customer feedback!
+							</p>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-6">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+						</div>				
+						<!-- /col #2 -->
+					</div>
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Rocket Elevators @2020
+					</div>
+				</div>
+
+			</footer>
+			<!-- /FOOTER -->
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+
+
+		<!-- PRELOADER -->
+		<div id="preloader">
+			<div class="inner">
+				<span class="loader"></span>
+			</div>
+		</div><!-- /PRELOADER -->
+
+	</body>
+</html>

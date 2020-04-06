@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  building_type: MyString
+  battery_status: MyString
+  battery_commissioning_date: 2020-03-10 16:47:37
+  battery_last_inspection_date: 2020-03-10 16:47:37
+  battery_operation_certificate: MyString
+  battery_information: MyString
+  battery_notes: MyString
+
+two:
+  building_type: MyString
+  battery_status: MyString
+  battery_commissioning_date: 2020-03-10 16:47:37
+  battery_last_inspection_date: 2020-03-10 16:47:37
+  battery_operation_certificate: MyString
+  battery_information: MyString
+  battery_notes: MyString

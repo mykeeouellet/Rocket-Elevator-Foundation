@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  building_type: MyString
+  served_floor_number: 1
+  column_status: MyString
+  column_information: MyString
+  column_notes: MyString
+
+two:
+  building_type: MyString
+  served_floor_number: 1
+  column_status: MyString
+  column_information: MyString
+  column_notes: MyString

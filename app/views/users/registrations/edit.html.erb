@@ -1,0 +1,428 @@
+
+	<body class="smoothscroll enable-animation" style="background-color: lightgray;" >
+		<style>
+		h1,
+		h2,
+		div,
+		h3 { font-family:Roboto
+		}
+
+		</style>
+
+
+		<!-- wrapper -->
+		<div id="wrapper">
+
+			<!-- 
+				AVAILABLE HEADER CLASSES
+
+				Default nav height: 96px
+				.header-md 		= 70px nav height
+				.header-sm 		= 60px nav height
+
+				.b-0 		= remove bottom border (only with transparent use)
+				.transparent	= transparent header
+				.translucent	= translucent header
+				.sticky			= sticky header
+				.static			= static header
+				.dark			= dark header
+				.bottom			= header on bottom
+				
+				shadow-before-1 = shadow 1 header top
+				shadow-after-1 	= shadow 1 header bottom
+				shadow-before-2 = shadow 2 header top
+				shadow-after-2 	= shadow 2 header bottom
+				shadow-before-3 = shadow 3 header top
+				shadow-after-3 	= shadow 3 header bottom
+
+				.clearfix		= required for mobile menu, do not remove!
+
+				Example Usage:  class="clearfix sticky header-sm transparent b-0"
+			-->
+			<div id="header" class="navbar-toggleable-md sticky header-md clearfix fixed" >
+
+				<!-- TOP NAV -->
+				<header id="topNav" class="w3-panel w3-border-red w3-large w3-topbar w3-bottombar w3-container w3-gray"">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+						<a class="logo float-left scrollTo" href="#top">
+							<img src="/assets/R2.png" alt="" />
+						</a>
+
+						<!-- 
+							Top Nav 
+							
+							AVAILABLE CLASSES:
+							submenu-dark = dark sub menu
+						-->
+						<div  class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<!-- 
+									.nav-onepage
+									Required for onepage navigation links
+									
+									Add .external for an external link!
+								-->
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active"><!-- HOME -->
+										<a href="/pages/index_one_page_elevator.html">
+											HOME
+										</a>
+									</li>
+									<li><!-- SERVICES -->
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray"><a href="index_one_page_elevator.html#services" class="w3-bar-item w3-button">SERVICES</a></button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+											  <a href="/pages/residential_services.html" class="w3-bar-item w3-button">Residential</a>
+											  <a href="/pages/corporate_services.html" class="w3-bar-item w3-button">Corporate</a>
+											  
+											</div>
+										  </div>
+									</li>
+									<li><!-- WORK -->
+										<a href="/pages/index_one_page_elevator.html#portfolio">
+											PORTFOLIO
+										</a>
+									</li>
+									<li><!-- NEWS -->
+										<a href="/pages/index_one_page_elevator.html#news">
+											NEWS
+										</a>
+									</li>
+									<li><!-- CLIENTS -->
+										<a href="/pages/index_one_page_elevator.html#clients">
+											CLIENTS
+										</a>
+									</li>
+									<li><!-- CONTACT -->
+										<a href="/pages/index_one_page_elevator.html#contact">
+											CONTACT
+										</a>
+									</li>
+									<li>
+									<div id="sessionButton">
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray">SESSION</button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+											  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %><br>
+											  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %><br>
+											  <%= link_to "Admin", rails_admin.dashboard_path, :class => 'navbar-link'  %>
+											  
+											</div>
+										  </div>
+									</div>
+									</li>
+									
+									<li>
+									<% if user_signed_in? %>
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray">PROFILE</button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+												
+													<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %><br>
+													<a href="/pages/login.html">My quotes</a><br>
+													<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+													<script>document.getElementById("sessionButton").style.display = "none";</script>
+												<% end %>
+												
+												</div>
+											</div>
+										  </div>
+									</li>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+			</div>
+			<hr class="m-0" /><!-- 1px line separator -->
+<section style="background-image: url('/assets/AdobeStock_162479912.jpeg'); text-align:center">
+
+<h2>Edit profile <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
+</section>
+			<!--why chose us start -->
+			<section style="background-color: lightgray;">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-md-6">
+							<h3 class="fs-20">Why choose us?</h3>
+							<ul class="list-unstyled">
+								<li><i class="fa fa-check"></i> We earned our ranks since 1976.</li>
+								<li><i class="fa fa-check"></i> We won lots of awards from all around the globe.</li>
+								<li><i class="fa fa-check"></i> We never had an accident on a construction site.</li>
+								<li><i class="fa fa-check"></i> We will rock your world </li>
+								<li><i class="fa fa-check"></i> We are LEGEND.</li>
+							</ul>
+						</div>
+
+						<div class="col-md-6">
+							<h3 class="fs-20 text-center">What our clients say?</h3>
+							<!-- 
+								Note: remove class="rounded" from the img for squared image!
+							-->
+							<ul class="row clearfix testimonial-dotted list-unstyled">
+								<li class="col-md-6">
+									<div class="testimonial">
+										<figure class="float-left">
+											<img class="rounded" src="/assets/badass_client.jpg" alt="" />
+										</figure>
+										<div class="testimonial-content">
+											<p>Since i got this elevator, i can finally go upstairs!</p>
+											<cite>
+												John Murray
+												<span>Satisfied client</span>
+											</cite>
+										</div>
+									</div>
+								</li>
+								<li class="col-md-6">
+									<div class="testimonial">
+										<figure class="float-left">
+											<img class="rounded" src="/assets/pedro copy.jpg" alt="" />
+										</figure>
+										<div class="testimonial-content">
+											<p>Rocket Elevators made an exceptionnal work in my building. I would recommend to anyone!</p>
+											<cite>
+												Pedro Muchacho
+												<span>Company owner</span>
+											</cite>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			<!-- / -->
+
+			<!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div class="col-md-8">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								We are in business since 1976, we earn lots of awards and we satisfied a lot of people. We wont let you down!
+							</p>
+							<h2>(581) 701-0303</h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-danger" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><button type="button" class="text-muted".text-info data-toggle="modal" data-target="#exampleModalCenter">
+								Terms and Conditions & Privacy
+							  </button></li>
+							
+						</ul>
+						&copy; All Rights Reserved, Rocket Elevators LTD
+					</div>
+				</div>
+
+			</footer>
+			<!-- /FOOTER -->
+			<!-- Modal -->
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">Terms and Conditions & Privacy</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						</div>
+						<div class="modal-body">
+							<strong>General Terms and Conditions:</strong><br>
+							<br> This Agreement and the Option Agreement constitute the entire
+							understanding of the parties relating to the employment of Executive by Corporation, and 
+							supersede and replace all written and oral agreements heretofore made or existing by and 
+							between the parties relating thereto. Executive acknowledges that he has read and understood 
+							all of the provisions of this Agreement, that the restrictions contained in Sections 4 and 5.7 
+							of this Agreement are reasonable and necessary for the protection of Corporation's business and
+							 that Executive entered into this contract in connection with a bona fide advancement of 
+							 Executive with Corporation in that Executive was granted a long-term employment contract. 
+							 This Agreement will inure to the benefit of any successors or assigns of Corporation.
+							  All captions used in this Agreement are intended solely for convenience of reference and 
+							  will in no way limit any of the provisions of this Agreement. The parties have executed 
+							  this Employment Agreement as of the date stated above.<br>
+
+								 <br><strong>What We Gather From You</strong><br>
+							   <br>Our site collects information in several ways. When you order information,
+							   registrations and services from us you are required to complete a client 
+							   order form. Opentracker.net requests your name, e-mail address, financial
+							   information (such as payment details and credit card details) and your 
+							   contact information (“Customer Information”).<br>
+
+							   <br>As part of our service, Opentracker.net also uses cookies to help identify
+							   you and access your account data, to track you, to track traffic patterns
+							   and for system administration. A cookie is a small text file that is 
+							   created by your browser from a web page and is stored on your computer’s
+							   hard drive.<br>
+
+							   <br><strong>Contact Information</strong><br>
+							   <br>Our site’s registration form requires users to give us contact information 
+							   (like email address) and financial information (like their account or credit
+							   card numbers). Contact information is used to get in touch with them when 
+							   necessary. Financial information collected is used to bill the user for 
+							   products and services.<br>
+
+							   <br><strong>Third Party Intermediaries</strong><br>
+							   <br>Opentracker.net verifies the credit card information given by you through 
+							   a 3rd party clearing companies “PayPal”, “Worldpay” or “Chargify”. 
+							   This clearing company is solely a link in the distribution chain, 
+							   and do not store, retain, or in any other way use the information they 
+							   obtain from us.
+						</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					</div>
+				</div>
+
+			</footer>
+			<!-- /FOOTER -->
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+
+
+		<!-- PRELOADER -->
+		<div id="preloader">
+			<div class="inner">
+				<span class="loader"></span>
+			</div>
+		</div><!-- /PRELOADER -->
+
+
+
+
+
+		</span>
+	</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+<% if current_employee %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mt-5">
+      <div class="mx-auto" style="width: 400px">
+        <%= form_with() do %>
+          <div class="form-group">
+               <h2> Curious about our result? </h2>
+               <h3> Click on the audio button </h3>
+                <audio controls>
+                    <source src="/summary.wav" type="audio/wav">    
+                </audio>
+          </div>
+          <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+    <button onClick="history.go(0);">Refresh Page</button>
+</div>
+<%end%>
