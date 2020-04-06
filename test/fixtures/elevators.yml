@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  elevator_serial_number: 1
+  elevator_model: MyString
+  building_type: MyString
+  elevator_status: MyString
+  elevator_commissioning_date: 2020-03-10 16:59:18
+  elevator_last_inspection_date: 2020-03-10 16:59:18
+  elevator_inspection_certificate: MyString
+  elevator_information: MyString
+  elevator_notes: MyString
+
+two:
+  elevator_serial_number: 1
+  elevator_model: MyString
+  building_type: MyString
+  elevator_status: MyString
+  elevator_commissioning_date: 2020-03-10 16:59:18
+  elevator_last_inspection_date: 2020-03-10 16:59:18
+  elevator_inspection_certificate: MyString
+  elevator_information: MyString
+  elevator_notes: MyString

@@ -1,0 +1,12 @@
+{
+  "name": "Rocket_Elevators_Information_System",
+  "private": true,
+  "dependencies": {
+    "chart.js": "^2.9.3",
+    "chartkick": "^3.2.0"
+  },
+  "devDependencies": {
+    "rrad": "^1.1.0",
+    "turbolinks": "^5.2.0"
+  }
+}

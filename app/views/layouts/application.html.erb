@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rocket Elevators Information System</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    
+     <% if notice %>
+     <p class="alert alert-success"><%= notice %></p>
+     <% end %>
+     <% if alert %>
+       <p class="alert alert-danger"><%= alert %></p>
+     <% end %>
+    
+     <%= yield %>
+
+     <%# <p class="nav-main nav-onepage"> %>
+     <%# <% if user_signed_in? %>
+       <%# <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> 
+        <%# <%= link_to 'My quotes', edit_user_registration_path, :class => 'navbar-link' %> 
+       <%# <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+     <%# <% else %>
+       <%# <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+       <%# <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+       <%# <%= link_to "Admin", rails_admin.dashboard_path, :class => 'navbar-link'  %>
+     <%# <% end %>
+     <%# </p> %>
+
+    <script>var  plugin_path = '/assets/plugins/';</script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+
+    <%= javascript_include_tag "//maps.google.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}" %>
+    
+  </body>
+</html>
