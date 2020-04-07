@@ -46,7 +46,8 @@ Rails.application.routes.draw do
 
   # Google Maps
   get 'geolocation/index'
-  
+  get 'pages/interventionForm'
+  post "interventions" => "interventions#create"
   # IBM Watson
 
   # get VERB at /watson end-point will call Controller#Action = text_to_speech#watson index from text_to_speech_controller.rb 

@@ -135,10 +135,21 @@
 											CLIENTS
 										</a>
 									</li>
-									<li><!-- CONTACT -->
-										<a href="#contact">
-											CONTACT
-										</a>
+									<li><!-- CONTACT // Employee -->
+									
+									<div id="contactButton">
+										<div class="w3-dropdown-hover">
+											<button class="w3-button w3-gray">CONTACT</button>
+											<div class="w3-dropdown-content w3-bar-block w3-border">
+												<a href="#contact">Contact Us</a><br>
+												<% if employee_signed_in? %>
+												<a href="/pages/interventionForm">Intervention Form</a><br>
+											  	<%# <%= link_to "Intervention Form", new_employee_session_path, :class => 'navbar-link'  %>
+											  	<% end %>
+											</div>
+										  </div>
+									</div>
+										
 									</li>
 									<li>
 									<div id="sessionButton">
