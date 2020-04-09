@@ -12,8 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery3
 
-//= require ./plugins/jquery/jquery-3.3.1.min
+//= require popper
+//= require bootstrap
+
+
 //= require scripts
 //= require ./plugins/slider.revolution/js/jquery.themepunch.tools.min
 //= require ./plugins/slider.revolution/js/jquery.themepunch.revolution.min

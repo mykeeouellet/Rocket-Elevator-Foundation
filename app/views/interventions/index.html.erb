@@ -1,9 +1,21 @@
-<body class="smoothscroll enable-animation" style="background-color: lightgray;" >
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+  <title>Rocket Elevators</title>
+
+  <%= javascript_include_tag "plugins/jquery/jquery-3.3.1.min" %>
+  <%= javascript_include_tag "intervention.js" %>
+  
+  
+  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+</head>
+<body class="smoothscroll enable-animation" style="background-color: white;" >
 		<style>
 		h1,
 		h2,
 		div,
-		h3 { font-family:Roboto
+		h3 { font-family:helvetica
 		}
 
 		</style>
@@ -115,20 +127,19 @@
 					</div>
 				</header>
 				<!-- /Top Nav -->
-				
-<!-- INTERVENTION FORM -->
-<%# <%= bootstrap_form_for Intervention.new do |f| %>
-	<%# <%= f.select(:customer_id, Customer.all.collect {|c| [c.company_name]}, {promp: "Select Customer"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:building_id, Building.all.collect {|b| [b.id]}, {promp: "Select Building"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:battery_id, Battery.all.collect {|b| [b.id]}, {promp: "Select Battery"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:column_id, Column.all.collect {|c| [c.id]}, {promp: "Select Column"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:elevator_id, Elevator.all.collect {|e| [e.id]}, {promp: "Select Elevator"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:employee_id, Employee.all.collect {|e| [e.firstname]}, {promp: "Select Employee in Charge"}, {class: 'form-control'})%> 
-	<%# <%= f.text_area :report, hide_label:true, placeholder: "Add your report here..." %> 
-	<%# <%= f.submit "Create Intervention" %> 
-<%# <% end %> 
+  <div class="container">
+    <div class="heading-title mb-20">
+      <h2>Create New Intervention</h2>
+    </div>
+  <div class="row">
+          <%# <%= render 'new', intervention: @intervention %> %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- FOOTER -->
+        <!-- FOOTER -->
 		<footer id="footer">
 					<div class="container">
 						<div class="row">
@@ -254,3 +265,5 @@
 		</div>
 		<!-- /PRELOADER -->
 </body>
+
+
