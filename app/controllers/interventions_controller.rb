@@ -74,6 +74,10 @@ class InterventionsController < ApplicationController
     @intervention.elevator_id = params[:elevators_selection]
     @intervention.employee_id = params[:employees_selection]
     @intervention.report = params[:report_message]
+    employee_id = @intervention.employee_id
+    @employee = Employee.find(employee_id)
+    customer_id = @intervention.customer_id
+    @customer = Customer.find(customer_id)
 
     puts @intervention
     p @intervention.valid?
@@ -81,7 +85,7 @@ class InterventionsController < ApplicationController
     
     respond_to do |format|
       if @intervention.save
-        create_intervention_ticket(@intervention)
+        create_intervention_ticket(@intervention, @employee, @customer)
         p 'Intervention was successfully created.'
         format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
@@ -92,7 +96,7 @@ class InterventionsController < ApplicationController
     end
   end
 
-  def create_intervention_ticket(intervention)
+  def create_intervention_ticket(intervention, employee, customer)
     @client = ZendeskAPI::Client.new do |config|
       config.url = "https://rocketelevators5361.zendesk.com/api/v2"
       config.username = ENV["ZENDESK_USERNAME"]
@@ -104,17 +108,20 @@ class InterventionsController < ApplicationController
       config.logger = Logger.new(STDOUT)
     end
     ticket = ZendeskAPI::Ticket.new(@client, :id => 1)
-    ZendeskAPI::Ticket.create!(@client, :subject => "Requesting support at customer # #{@intervention.customer_id.to_s}", 
+    ZendeskAPI::Ticket.create!(@client, :subject => "Requesting support at #{@customer.company_name}", 
     :comment => { :value => "
-    A new intervention has been created by employee ##{@intervention.author}.
+    A new intervention has been created by employee ##{current_employee.id}.
 
-      Customer id: #{@intervention.customer_id.to_s}
-      Building id:  #{@intervention.building_id.to_s}
-      Battery id: #{@intervention.battery_id.to_s}
-      Column id: #{@intervention.column_id.to_s}
-      Elevator id: #{@intervention.elevator_id.to_s}
-    
-    This Intervention has been assigned to employee ##{@intervention.employee_id.to_s}.
+      Customer: #{@customer.company_name}
+      ==================================
+      Customer id: ##{@customer.id}
+      Building id: ##{@intervention.building_id.to_s}
+      Battery id: ##{@intervention.battery_id.to_s}
+      Column id: ##{@intervention.column_id.to_s}
+      Elevator id: ##{@intervention.elevator_id.to_s}
+      ===================================
+
+    This Intervention has been assigned to #{@employee.firstname} #{@employee.lastname}.
 
     Report:
     #{@intervention.report}
@@ -122,7 +129,7 @@ class InterventionsController < ApplicationController
     },  
     :priority => "urgent",
     :type => "problem",
-    requester: {"name": "Employee # #{current_employee.id}"})
+    requester: {"name": "Employee ##{current_employee.id}"})
   end
   # PATCH/PUT /interventions/1
   # PATCH/PUT /interventions/1.json

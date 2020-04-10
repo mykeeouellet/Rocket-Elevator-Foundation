@@ -1,64 +1,65 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @intervention.author %>
-</p>
+<div class="container form-group">
+<div class="card">
+<div class="heading-title text-center">
+  <h1>Intervention Submitted</h1>
+</div>
+<div class="card-body">
 
-<p>
-  <strong>Customer:</strong>
-  <%= @intervention.customer %>
-</p>
+  <div class="row form-control">
+    <p>
+      <strong>Author:</strong>
+      <%= @intervention.author %>
+    </p>
+  </div>
+  <div class="row form-control">
+    <p>
+      <strong>Customer:</strong>
+      <%= @intervention.customer %>
+    </p>
+  </div>
 
-<p>
-  <strong>Building:</strong>
-  <%= @intervention.building %>
-</p>
+  <div class="row form-control">
+    <p>
+      <strong>Building:</strong>
+      <%= @intervention.building %>
+    </p>
+  </div>
+  <div class="row form-control">
+    <p>
+      <strong>Battery:</strong>
+      <%= @intervention.battery %>
+    </p>
+  </div>
+  <div class="row form-control">
+    <p>
+      <strong>Column:</strong>
+      <%= @intervention.column %>
+    </p>
+  </div>
+  <div class="row form-control">
+    <p>
+      <strong>Elevator:</strong>
+      <%= @intervention.elevator %>
+    </p>
+  </div>
+  <div class="row form-control">
+    <p>
+      <strong>Employee:</strong>
+      <%= @intervention.employee %>
+    </p>
+  </div>
+  <div class="row form-control">
+    <p>
+      <strong>Report:</strong>
+      <%= @intervention.report %>
+    </p>
+  </div>
 
-<p>
-  <strong>Battery:</strong>
-  <%= @intervention.battery %>
-</p>
+    <%= link_to 'New', new_intervention_path %> |
+    <%= link_to 'Home', root_path %>
 
-<p>
-  <strong>Column:</strong>
-  <%= @intervention.column %>
-</p>
-
-<p>
-  <strong>Elevator:</strong>
-  <%= @intervention.elevator %>
-</p>
-
-<p>
-  <strong>Employee:</strong>
-  <%= @intervention.employee %>
-</p>
-
-<p>
-  <strong>Starting time:</strong>
-  <%= @intervention.starting_time %>
-</p>
-
-<p>
-  <strong>Ending time:</strong>
-  <%= @intervention.ending_time %>
-</p>
-
-<p>
-  <strong>Result:</strong>
-  <%= @intervention.result %>
-</p>
-
-<p>
-  <strong>Report:</strong>
-  <%= @intervention.report %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @intervention.status %>
-</p>
-
-<%= link_to 'Edit', edit_intervention_path(@intervention) %> |
-<%= link_to 'Back', interventions_path %>
+</div>
+</div>
+</div>
