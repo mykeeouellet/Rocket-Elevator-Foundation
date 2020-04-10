@@ -1,10 +1,10 @@
 require 'zendesk_api'
 
 client = ZendeskAPI::Client.new do |config|
-    config.url = "https://rocketelevators5360.zendesk.com/api/v2"
+    config.url = "https://rocketelevators5361.zendesk.com/api/v2"
     config.username = ENV["ZENDESK_USERNAME"]
     config.token = ENV["ZENDESK_API_TOKEN"]
-    # config.password = "Mykee@123"
+    config.password = ENV["ZENDESK_PASSWORD"]
 
     # Optional:
 
