@@ -97,6 +97,7 @@ class InterventionsController < ApplicationController
       config.url = "https://rocketelevators5361.zendesk.com/api/v2"
       config.username = ENV["ZENDESK_USERNAME"]
       config.token = ENV["ZENDESK_API_TOKEN"]
+      config.password = ENV["ZENDESK_PASSWORD"]
       config.retry = true
       config.raise_error_when_rate_limited = false
       require 'logger'
