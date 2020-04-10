@@ -12,8 +12,9 @@ To Use it will to first login to our Zendesk account.
     - Username : mykeeouellet@hotmail.com
     - Password : Mykee@123
 
-Then you will need to sign-in as an employee on the rocket elevators
-website. You will then be able to navigate to the dropdown menu under
+Then you will need to sign-up as an employee on the rocket elevators
+website to this url => http://rocketelevators.ca/employees/sign_up 
+You will then be able to navigate to the dropdown menu under
 the CONTACT section of the home page and select "Intervention Form". 
 
 This will lead you there => (http://rocketelevators.ca/interventions/new).

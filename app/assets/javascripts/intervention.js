@@ -5,6 +5,7 @@ $(document).ready(function() {
     $("#intervention_battery_id").hide();
     $("#intervention_column_id").hide();
     $("#intervention_elevator_id").hide();
+    $("#intervention_submit").hide();
 
     // Building selector show/hide function
     $("#intervention_customer_id").change(function(){
@@ -42,9 +43,11 @@ $(document).ready(function() {
         if(buildings_id == 0){
             console.log("Hiding Battery")
             $("#intervention_battery_id").hide();
+            $("#intervention_submit").hide();
         } else{
             console.log("Showing battery")
             $("#intervention_battery_id").show();
+            $("#intervention_submit").show();
         }
     // Ajax calling get_batteries and creating the dropdown selector
     $.ajax({
