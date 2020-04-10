@@ -1,9 +1,21 @@
-<body class="smoothscroll enable-animation" style="background-color: lightgray;" >
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+  <title>Rocket Elevators</title>
+
+  <%= javascript_include_tag "plugins/jquery/jquery-3.3.1.min" %>
+  <%= javascript_include_tag "intervention.js" %>
+  
+  
+  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+</head>
+<body class="smoothscroll enable-animation" style="background-color: white;" >
 		<style>
 		h1,
 		h2,
 		div,
-		h3 { font-family:Roboto
+		h3 { font-family:helvetica
 		}
 
 		</style>
@@ -114,21 +126,88 @@
 
 					</div>
 				</header>
+      <br>
 				<!-- /Top Nav -->
-				
-<!-- INTERVENTION FORM -->
-<%# <%= bootstrap_form_for Intervention.new do |f| %>
-	<%# <%= f.select(:customer_id, Customer.all.collect {|c| [c.company_name]}, {promp: "Select Customer"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:building_id, Building.all.collect {|b| [b.id]}, {promp: "Select Building"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:battery_id, Battery.all.collect {|b| [b.id]}, {promp: "Select Battery"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:column_id, Column.all.collect {|c| [c.id]}, {promp: "Select Column"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:elevator_id, Elevator.all.collect {|e| [e.id]}, {promp: "Select Elevator"}, {class: 'form-control'})%> 
-	<%# <%= f.select(:employee_id, Employee.all.collect {|e| [e.firstname]}, {promp: "Select Employee in Charge"}, {class: 'form-control'})%> 
-	<%# <%= f.text_area :report, hide_label:true, placeholder: "Add your report here..." %> 
-	<%# <%= f.submit "Create Intervention" %> 
-<%# <% end %> 
+  <div class="container">
+    <div class="heading-title mb-20">
+      <h2>Create Intervention</h2>
+    </div>
+  </div><br>
 
-<!-- FOOTER -->
+<%= form_for @intervention, url: {controller: 'interventions', action: 'create'} do |form| %>
+<%# ROW CUSTOMER AND EMPLOYEE %>
+  <div class="row">
+    <div id="intervention_customer_id" class="form-group col-sm-4">
+      <label for="my_customers">Customers *</label>
+      <select class="col-md-12" required="required" id="customers_id" name="customers_selection">
+        <option default value="0"> -- SELECT -- </option>
+          <% @customers.each do |customer| %>
+            <option value="<%= customer.id %>"> <%="#" + customer.id.to_s + " " + customer.company_name %> </option>
+          <% end %>
+      </select>  
+    </div>
+
+    <div id="intervention_employee_id" class="form-group col-sm-4">
+      <label for="my_employees">Employee *</label>
+      <select class="col-md-12" required="required" id="employees_id" name="employees_selection">
+        <option default value="0"> -- SELECT -- </option>
+        <% @employees.each do |employee| %>
+          <option value="<%= employee.id %>"> <%="#" + employee.id.to_s + " " + employee.firstname + " " + employee.lastname %> </option>
+        <% end %>
+      </select> 
+    </div>
+  </div>
+
+<%# ROW BUILDING AND BATTERY %>
+  <div class="row">  
+    <div id="intervention_building_id" class="form-group col-sm-4">
+      <label for="my_buildings">Building *</label>
+      <select class="col-md-12" required="required" id="buildings_id" name="buildings_selection">
+      <option default value="0"> -- SELECT -- </option>
+      </select>
+    </div>
+    <div id="intervention_battery_id" class="form-group col-sm-4">
+      <label for="my_batteries">Battery </label>
+      <select class="col-md-12" required="required" id="batteries_id" name="batteries_selection">
+      <option default value="0"> -- SELECT -- </option>
+      </select>
+   </div>
+  </div>
+
+<%# ROW COLUMN AND ELEVATOR %>
+  <div class="row">
+    <div id="intervention_column_id" class="form-group col-sm-4">
+      <label for="my_columns">Column</label>
+      <select class="col-md-12" id="columns_id" name="columns_selection">
+      <option default value="0"> -- SELECT -- </option>
+      </select>
+    </div>
+    <div id="intervention_elevator_id" class="form-group col-sm-4">
+      <label for="my_elevators">Elevator</label>
+      <select class="col-md-12" id="elevators_id" name="elevators_selection">
+      <option default value="0"> -- SELECT -- </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="intervention_report" class="form-group col-sm-8">
+      <%= form.text_area :report, class: "form-control h-250", placeholder: "Add your report here...", name: "report_message" %>
+    </div>
+  </div>
+  <div id="intervention_submit" class="actions">
+    <%= form.submit 'Create' %>
+  </div>
+<% end %>
+
+   </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+        <!-- FOOTER -->
 		<footer id="footer">
 					<div class="container">
 						<div class="row">
@@ -254,3 +333,7 @@
 		</div>
 		<!-- /PRELOADER -->
 </body>
+
+
+
+

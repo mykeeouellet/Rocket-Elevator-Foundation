@@ -3,4 +3,5 @@ class Building < ApplicationRecord
     has_one :address , as: :entity
     has_many :building_details
     has_many :battery
+    has_many :intervention
 end

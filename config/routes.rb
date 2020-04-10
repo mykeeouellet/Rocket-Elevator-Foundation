@@ -1,5 +1,12 @@
 
 Rails.application.routes.draw do
+
+  resources :interventions do 
+    get :get_buildings, on: :collection
+    get :get_batteries, on: :collection
+    get :get_columns, on: :collection
+    get :get_elevators, on: :collection
+  end 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Blazer::Engine, at: 'blazer'
 
@@ -39,6 +46,7 @@ Rails.application.routes.draw do
   get "pages/login"
   post "quotes" => "quotes#create"
   post "leads" => "leads#create"
+  post "interventions" => "interventions#create"
 
   # Dropbox
   get 'dropbox/auth' => 'dropbox#auth'
@@ -46,8 +54,6 @@ Rails.application.routes.draw do
 
   # Google Maps
   get 'geolocation/index'
-  get 'pages/interventionForm'
-  post "interventions" => "interventions#create"
   # IBM Watson
 
   # get VERB at /watson end-point will call Controller#Action = text_to_speech#watson index from text_to_speech_controller.rb 

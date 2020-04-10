@@ -93,6 +93,7 @@ gem 'blazer'
 gem "json"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'bootstrap', '~> 4.4.1'
+gem 'bootstrap_form'
 gem "jquery-ui-rails"
 
 gem 'sendgrid-ruby'
