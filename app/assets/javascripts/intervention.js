@@ -27,6 +27,7 @@ $(document).ready(function() {
             success: function (buildings) {
                 console.log(buildings)
                 $("#buildings_id").empty();
+
     
                 $("#buildings_id").append('<option default value="0"> -- SELECT -- </option>');
                 for(var i = 0; i < buildings.length; i++){
@@ -40,7 +41,7 @@ $(document).ready(function() {
     $("#intervention_building_id").change(function(){
         var building_id = $('#buildings_id').val();
         console.log(building_id)
-        if(buildings_id == 0){
+        if(buildings_id == null){
             console.log("Hiding Battery")
             $("#intervention_battery_id").hide();
             $("#intervention_submit").hide();
@@ -62,7 +63,7 @@ $(document).ready(function() {
             console.log(batteries)
             $("#batteries_id").empty();
 
-            $("#batteries_id").append('<option default value="0"> -- SELECT -- </option>');
+            $("#batteries_id").append('<option default value=""> -- SELECT -- </option>');
             for(var i = 0; i < batteries.length; i++){
                 $("#batteries_id").append('<option value="' + batteries[i]["id"] + '">' +batteries[i]["id"] + '</option>');
             }
@@ -74,7 +75,7 @@ $(document).ready(function() {
     $("#intervention_battery_id").change(function(){
         console.log("function for columns begins here")
         var battery_id = $('#batteries_id').val();
-        if(battery_id == 0){
+        if(battery_id == null){
             $("#intervention_column_id").hide();
         } else{
             $("#intervention_column_id").show();
@@ -93,7 +94,7 @@ $(document).ready(function() {
             console.log(columns)
             $("#columns_id").empty();
 
-            $("#columns_id").append('<option default value="0"> -- SELECT -- </option>');
+            $("#columns_id").append('<option default value=""> -- SELECT -- </option>');
             for(var i = 0; i < columns.length; i++){
                 $("#columns_id").append('<option value="' + columns[i]["id"] + '">' +columns[i]["id"] + '</option>');
             }
@@ -104,7 +105,7 @@ $(document).ready(function() {
     // Elevator selector show/hide function
     $("#intervention_column_id").change(function(){
         var column_id = $('#columns_id').val();
-        if(column_id == 0){
+        if(column_id == null){
             $("#intervention_elevator_id").hide();
         } else{
             $("#intervention_elevator_id").show();
@@ -121,7 +122,7 @@ $(document).ready(function() {
             success: function (elevators) {
                 $("#elevators_id").empty();
     
-                $("#elevators_id").append('<option default value="0"> -- SELECT -- </option>');
+                $("#elevators_id").append('<option default value=""> -- SELECT -- </option>');
                 for(var i = 0; i < elevators.length; i++){
                     $("#elevators_id").append('<option value="' + elevators[i]["id"] + '">' + elevators[i]["id"] + '</option>');
                 }
