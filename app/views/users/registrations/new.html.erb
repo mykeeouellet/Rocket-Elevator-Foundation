@@ -148,13 +148,13 @@
 
 			</div>
 			<hr class="m-0" /><!-- 1px line separator -->
-<section style="background-image: url('/assets/AdobeStock_162479912.jpeg'); text-align:center">
+<section style="background-image: url('/assets/AdobeStock_162479912.jpeg');">
 
 <h2>Sign up</h2>
-
+<div class="card form-group">
+<div class="card-body">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -172,13 +172,19 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
+  <div class="field">
+    <%= flash[:recaptcha_error] %>
+    <%= recaptcha_tags %>
+	</div>
   <div class="actions">
     <%= f.submit "Sign up" %>
+	<%= render "users/shared/links" %>
   </div>
+  </div>
+</div>
 <% end %>
 
-<%= render "users/shared/links" %>
+
 </section>
             <!-- FOOTER -->
 			<footer id="footer">

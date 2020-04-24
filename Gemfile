@@ -55,6 +55,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'ruby-debug-ide', '~> 0.7.0'
   gem 'debase', '~> 0.2.4.1'
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -95,6 +97,9 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'bootstrap', '~> 4.4.1'
 gem 'bootstrap_form'
 gem "jquery-ui-rails"
+
+gem "recaptcha", require: "recaptcha/rails"
+
 
 gem 'sendgrid-ruby'
 

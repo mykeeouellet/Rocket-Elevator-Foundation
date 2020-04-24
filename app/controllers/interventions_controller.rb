@@ -1,7 +1,6 @@
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_employee!
-
   # GET /interventions
   # GET /interventions.json
   def index
@@ -64,7 +63,6 @@ class InterventionsController < ApplicationController
   # POST /interventions
   # POST /interventions.json
   def create
-    p 'create'
     @intervention = Intervention.new
     @intervention.author = current_employee.id
     @intervention.customer_id = params[:customers_selection]

@@ -11,9 +11,12 @@ Rails.application.routes.draw do
   mount Blazer::Engine, at: 'blazer'
 
   devise_for :employees
-
+  devise_for :users, :controllers => { 
+    :registrations => "users/registrations",
+    :sessions => "users/sessions", 
+    :passwords => "users/passwords" } do 
   #controller: the controller which should be used. All routes by default points to Devise controllers, here we set to point to our controller
-  devise_for :users, controllers: { sessions: 'users/sessions' } do
+  # devise_for :users, controllers: { sessions: 'users/sessions' } do
 
     #Session routes for Authenticatable
     # GET /resource/sign_in
@@ -44,6 +47,7 @@ Rails.application.routes.draw do
   get "pages/corporate_services"
   get "pages/SubmissionForm"
   get "pages/login"
+  get "pages/apod"
   post "quotes" => "quotes#create"
   post "leads" => "leads#create"
   post "interventions" => "interventions#create"
@@ -51,7 +55,7 @@ Rails.application.routes.draw do
   # Dropbox
   get 'dropbox/auth' => 'dropbox#auth'
   get 'dropbox/auth_callback' => 'dropbox#auth_callback'
-
+  
   # Google Maps
   get 'geolocation/index'
   # IBM Watson
