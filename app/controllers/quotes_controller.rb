@@ -64,14 +64,14 @@ class QuotesController < ApplicationController
 
     end
     quote.save!
-    create_quote_ticket(quote)
+    # create_quote_ticket(quote)
     redirect_to "/pages/SubmissionForm"
   end
 
   def create_quote_ticket(quote)
     # require 'zendesk_api'
     @client = ZendeskAPI::Client.new do |config|
-      config.url = "https://rocketelevators5360.zendesk.com/api/v2"
+      config.url = "https://rocketelevators5361.zendesk.com/api/v2"
       config.username = ENV["ZENDESK_USERNAME"]
       config.token = ENV["ZENDESK_API_TOKEN"]
       config.retry = true

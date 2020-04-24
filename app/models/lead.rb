@@ -1,5 +1,20 @@
 class Lead < ApplicationRecord
     require "date"
+
+    validates :lead_full_name, length: {in: 2..20}, presence: true
+    validates :lead_full_name, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+    validates :lead_company_name, length: {in: 3..20}, presence: true
+    validates :lead_company_name, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+    validates :lead_email, length: {in: 8..25}, presence: true
+    validates :lead_phone, length: {in: 10..11}, presence:true
+    validates :project_name, length: {in: 3..20}, presence: true
+    validates :project_name, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+    validates :project_description, length: {maximum: 25}, presence: true
+    validates :project_description, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+    validates :department_of_service, presence: true
+    validates :lead_message, length: {maximum: 150}
+    validates :lead_message, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+    
     has_one_attached :Attachment
     after_save :add_file_to_dropbox
     

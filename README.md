@@ -1,5 +1,13 @@
 ROCKET ELEVATOR FOUNDATION
-(Consolidation // Week 9 Odyssey Program)
+
+RSPEC Tests // Usage
+
+You should run RSpec tests in the command line by using  
+    
+    bundle exec rspec --format documentation
+
+This will test mainly three files (elevator_media_spec.rb/interventions_spec.rb/quotes_spec.rb).
+All these files are located in the "spec" folder of the application. 
 
 1.Zendesk API // Usage
 This Api will be triggered each time an employee creates an intervention on 
