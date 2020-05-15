@@ -15,7 +15,7 @@ class Streamer
         puts "===================== The Image ========================"
         puts "Date: #{@date}"
         puts "Title: #{@title}"
-        puts "Url: #{@hdurl}"
+        puts "Explanation: #{@explanation}"
         puts "========================================================"
         return @html
     end
