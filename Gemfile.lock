@@ -300,6 +300,7 @@ GEM
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
+    newrelic_rpm (6.10.0.364)
     nio4r (2.5.2)
     nio4r (2.5.2-java)
     nokogiri (1.10.9)
@@ -545,6 +546,7 @@ DEPENDENCIES
   json
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)
+  newrelic_rpm
   pg (~> 0.18.4)
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.1)
