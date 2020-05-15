@@ -3,12 +3,12 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "99.79.123.96", user: "ubuntu", roles: %w{app db web}
+server "15.223.63.175", user: "ubuntu", roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 app = ENV['APP']
 if app.nil? or app.empty?
-  app = "MykeeOuellet" 
+  app = "rocketelevatorsdb" 
 end
 set :application, app
 set :rails_env, "development"
@@ -25,9 +25,9 @@ set :linked_files, %w{config/database.yml config/application.yml}
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{ubuntu@99.79.123.96}
-role :web, %w{ubuntu@99.79.123.96}
-role :db,  %w{ubuntu@99.79.123.96}
+role :app, %w{ubuntu@15.223.63.175}
+role :web, %w{ubuntu@15.223.63.175}
+role :db,  %w{ubuntu@15.223.63.175}
 
 
 
@@ -50,11 +50,14 @@ role :db,  %w{ubuntu@99.79.123.96}
 # Global options
 # --------------
 #  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
+#    keys: %w(/home/ubuntu/.ssh/id_rsa),
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }
-#
+# set :ssh_options, { 
+#   forward_agent: true,
+#   user: fetch(:user),
+#   keys: %w(~/.ssh/id_rsa) }
 # The server-based syntax can be used to override options:
 # ------------------------------------
 # server "example.com",
