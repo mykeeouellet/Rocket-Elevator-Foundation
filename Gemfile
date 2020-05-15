@@ -99,6 +99,7 @@ gem 'bootstrap_form'
 gem "jquery-ui-rails"
 
 gem "recaptcha", require: "recaptcha/rails"
+gem 'google-api-client', '~> 0.34'
 
 
 gem 'sendgrid-ruby'
